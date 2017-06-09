@@ -18,11 +18,23 @@
     </properties>
 
     <dependencies>
+
+        <!-- model support -->
+        <dependency>
+            <groupId>com.fsmeeting</groupId>
+            <artifactId>remind-model</artifactId>
+        </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <version>4.10</version>
         </dependency>
+
     </dependencies>
 </project>
