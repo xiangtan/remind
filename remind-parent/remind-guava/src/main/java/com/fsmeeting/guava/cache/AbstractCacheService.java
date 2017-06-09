@@ -6,10 +6,10 @@ import com.google.common.cache.LoadingCache;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseCacheService<K, V> {
+public abstract class AbstractCacheService<K, V> {
     private LoadingCache<K, V> cache;
 
-    public BaseCacheService() {
+    public AbstractCacheService() {
         cache = CacheBuilder.newBuilder()
                 .expireAfterWrite(30, TimeUnit.MINUTES)
                 .build(new CacheLoader<K, V>() {
@@ -20,7 +20,7 @@ public abstract class BaseCacheService<K, V> {
                 });
     }
 
-    public BaseCacheService(long duration) {
+    public AbstractCacheService(long duration) {
         cache = CacheBuilder.newBuilder()
                 .expireAfterWrite(duration, TimeUnit.MINUTES)
                 .build(new CacheLoader<K, V>() {

@@ -12,24 +12,52 @@
     <name>remind-parent</name>
     <url>http://maven.apache.org</url>
 
-
     <properties>
-
         <!-- source encode -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Test -->
+        <junit.version>4.10</junit.version>
+        <!-- Spring -->
+        <spring.version>4.1.2.RELEASE</spring.version>
         <!-- guava -->
         <guava.version>20.0</guava.version>
+        <!-- JSON -->
+        <fastjson.version>1.2.28</fastjson.version>
 
     </properties>
 
     <dependencyManagement>
         <dependencies>
 
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
             <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <!-- 阿里JSON工具 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
 
         </dependencies>
@@ -39,7 +67,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
