@@ -1,6 +1,7 @@
 package com.fsmeeting.guava.cache;
 
 import com.fsmeeting.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,9 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements IUserService {
 
+    @Autowired
+    private UserIdCacheService userIdCacheService;
+
     @Override
-    public User getById(Integer userId) {
-        return null;
+    public User getById(Long userId) {
+        return userIdCacheService.getCache(userId);
     }
 
 }

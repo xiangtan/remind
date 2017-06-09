@@ -9,5 +9,5 @@ import com.fsmeeting.model.User;
  */
 public interface IUserService {
 
-    User getById(Integer userId);
+    User getById(Long userId);
 }
