@@ -37,7 +37,7 @@ public class CacheTest {
                 //时间回收
                 .expireAfterAccess(5, TimeUnit.SECONDS) // 指定时间内没有读写操作
                 .expireAfterWrite(5, TimeUnit.SECONDS)  // 指定时间内没有写操作
-                // 删除回调操作
+                // 清除回调操作,可装饰listener为asyn，asynchronous(RemovalListener, Executor)
                 .removalListener(new RemovalListener<Integer, Graph>() {
                     @Override
                     public void onRemoval(RemovalNotification<Integer, Graph> removalNotification) {
@@ -46,7 +46,10 @@ public class CacheTest {
                         Graph value = removalNotification.getValue();
                         System.out.println(key + "[" + value + "] 被删除，删除原因[" + cause + "]");
                     }
+
                 })
+                //自动定时刷新功能
+                .refreshAfterWrite(15, TimeUnit.MINUTES)
                 //流控，写入操作限制最大并发
                 .concurrencyLevel(10)
                 //开启统计功能：缓存命中率、加载新值的平均时间、缓存项被懂回收的总数（不包括显示清理）
@@ -59,6 +62,7 @@ public class CacheTest {
                         return null;
                     }
 
+                    //扩展刷新时的行为
                     @Override
                     public ListenableFuture<Graph> reload(Integer key, Graph oldValue) throws Exception {
                         return super.reload(key, oldValue);
@@ -109,7 +113,7 @@ public class CacheTest {
     private User loadStorage(Integer userId) {
         User user = new User();
         user.setId(userId);
-        user.setName("name " + userId);
+        user.setUsername("name " + userId);
         return user;
     }
 }

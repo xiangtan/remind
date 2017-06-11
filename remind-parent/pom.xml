@@ -7,6 +7,7 @@
     <modules>
         <module>remind-guava</module>
         <module>remind-model</module>
+        <module>remind-cache</module>
     </modules>
     <packaging>pom</packaging>
     <name>remind-parent</name>
@@ -23,7 +24,8 @@
         <guava.version>20.0</guava.version>
         <!-- JSON -->
         <fastjson.version>1.2.28</fastjson.version>
-
+        <!-- ehcache -->
+        <ehcache.version>2.6.6</ehcache.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +47,17 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
 
             <!-- guava -->
             <dependency>
@@ -58,6 +71,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- ehcache -->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache-core</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
 
         </dependencies>
