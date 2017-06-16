@@ -10,6 +10,7 @@
         <module>remind-cache</module>
         <module>remind-cas-server</module>
         <module>remind-cas-server-integration-redis</module>
+        <module>remind-shiro01</module>
     </modules>
     <packaging>pom</packaging>
     <name>remind-parent</name>
