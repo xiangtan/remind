@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal:4096}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle:200}"/>
+        <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis:3000}"/>
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow:true}"/>
+        <property name="testOnReturn" value="${redis.pool.testOnReturn:true}"/>
+    </bean>
+
+    <bean id="jedisSentinelPool" class="redis.clients.jedis.JedisSentinelPool">
+        <constructor-arg index="0" value="${redis.sentinel.masterName:mymaster}"/>
+        <constructor-arg index="1">
+            <set>
+                <value>${redis.sentinel.servers:192.168.7.178:26379}</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="2" ref="poolConfig"/>
+    </bean>
+
+</beans>

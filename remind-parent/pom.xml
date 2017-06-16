@@ -8,6 +8,8 @@
         <module>remind-guava</module>
         <module>remind-model</module>
         <module>remind-cache</module>
+        <module>remind-cas-server</module>
+        <module>remind-cas-server-integration-redis</module>
     </modules>
     <packaging>pom</packaging>
     <name>remind-parent</name>
@@ -26,6 +28,10 @@
         <fastjson.version>1.2.28</fastjson.version>
         <!-- ehcache -->
         <ehcache.version>2.6.6</ehcache.version>
+        <!-- cas -->
+        <cas.version>4.2.7</cas.version>
+        <!-- redis -->
+        <redis.version>2.9.0</redis.version>
     </properties>
 
     <dependencyManagement>
@@ -53,11 +59,16 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
 
             <!-- guava -->
             <dependency>
@@ -80,6 +91,19 @@
                 <version>${ehcache.version}</version>
             </dependency>
 
+            <!-- cas -->
+            <dependency>
+                <groupId>org.jasig.cas</groupId>
+                <artifactId>cas-server-core</artifactId>
+                <version>${cas.version}</version>
+            </dependency>
+
+            <!-- redis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
