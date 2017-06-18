@@ -11,6 +11,9 @@
         <module>remind-cas-server</module>
         <module>remind-cas-server-integration-redis</module>
         <module>remind-shiro01</module>
+        <module>remind-shiro</module>
+        <module>remind-shiro</module>
+        <module>remind-shiro</module>
     </modules>
     <packaging>pom</packaging>
     <name>remind-parent</name>
@@ -33,6 +36,8 @@
         <cas.version>4.2.7</cas.version>
         <!-- redis -->
         <redis.version>2.9.0</redis.version>
+        <!-- shiro -->
+        <shiro.version>1.3.2</shiro.version>
     </properties>
 
     <dependencyManagement>
@@ -105,6 +110,14 @@
                 <artifactId>jedis</artifactId>
                 <version>${redis.version}</version>
             </dependency>
+
+            <!-- shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
