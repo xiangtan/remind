@@ -14,6 +14,7 @@
         <module>remind-shiro</module>
         <module>remind-shiro</module>
         <module>remind-shiro</module>
+        <module>remind-lucene</module>
     </modules>
     <packaging>pom</packaging>
     <name>remind-parent</name>
