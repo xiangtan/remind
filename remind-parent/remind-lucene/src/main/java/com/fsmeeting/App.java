@@ -1,6 +1,7 @@
 package com.fsmeeting;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -30,7 +31,8 @@ public class App {
         try {
             // 创建索引
             FSDirectory dir = NIOFSDirectory.open(Paths.get("Y://", "lucene"));
-            Analyzer analyzer = new StandardAnalyzer();
+          //  Analyzer analyzer = new StandardAnalyzer();
+            Analyzer analyzer = new KeywordAnalyzer();
             IndexWriterConfig indexWriterConfig = new IndexWriterConfig(analyzer);
             indexWriterConfig.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);
             IndexWriter indexWriter = new IndexWriter(dir, indexWriterConfig);
@@ -49,7 +51,7 @@ public class App {
             IndexSearcher indexSearcher = new IndexSearcher(directoryReader);
 
             QueryParser parser = new QueryParser("content", analyzer);
-            Query query = parser.parse("慕容");
+            Query query = parser.parse("被索引的内容,慕");
 
             TopDocs topDocs = indexSearcher.search(query, null, 100);
             ScoreDoc[] hits = topDocs.scoreDocs;
