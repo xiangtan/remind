@@ -3,7 +3,9 @@ package com.fsmeeting.lucene.demo;
 import java.io.Serializable;
 
 /**
- * Created by think on 2017/6/29.
+ * Description: 设备参数信息
+ *
+ * @Author:yicai.liu<虚竹子>
  */
 public class DeviceParams implements Serializable {
     private String os;
